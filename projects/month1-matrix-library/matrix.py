@@ -19,3 +19,23 @@ def __add__(self, other):
     return Matrix(result)
   else:
     raise ValueError("Matrices must have the same dimensions")
+
+def __mul__(self, other):
+  if len(self.data[0]) == len(other.data):
+    # Initializing the Result Matrix
+    result = [0] * len(self.data)
+    result_temp = [0] * len(other.data[0])
+
+    # Adding in the columns for the Result Matrix
+    for i in range(len(result)):
+      result[i] = result_temp.copy()
+
+    # The Matrix Multiplication  
+    for i in range(len(self.data)): # Rows in C
+      for j in range(len(other.data[0])): # Columns in C
+        for k in range(len(other.data)): # Columns in A and Rows in B
+          result[i][j] += other.data[k][j] * self.data[i][k]
+    
+    return Matrix(result)
+  else:
+    raise ValueError("First Matrix's columns must match the Second Matrix's rows")

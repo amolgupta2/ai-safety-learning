@@ -39,3 +39,12 @@ def __mul__(self, other):
     return Matrix(result)
   else:
     raise ValueError("First Matrix's columns must match the Second Matrix's rows")
+
+def transpose(self):
+  result = [0] * len(self.data[0]) # Initializing the new array with the amount of rows = the amount of columns of the inputted Matrix
+  for i in range(len(result)): # Cycling through the columns of the old matrix
+    temp = [] # temporary array to contain data which will refresh as a new array every loop
+    for j in range(len(self.data)): # Cycling through the rows of the matrix
+      temp.append(self.data[j][i]) # Selecting the first index from each row, then 2nd index from each row, and ...
+    result[i] = temp # Takes the array containing the column values and adds it as a list of lists
+  return Matrix(result) # Return the Transposed Matrix

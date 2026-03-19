@@ -6,7 +6,12 @@ class: Matrix
     self.data = data
   
   def __str__(self):
-    return '\n'.join([str(row) for row in self.data])
+    temp  = "" # Initializing String Var to return
+    for i in range(len(self.data)): # Cycling through each list within the list
+      for j in range(len(self.data[i])): # Cycling throug each index in the list
+       temp = temp + str(self.data[i][j]) + " " # Concatenating each int in the Matrix
+      temp = temp + "\n" # Printing a new line to represent a new row for the new list
+    return temp # Return the string
   
   def __add__(self, other):
     if len(self.data) == len(other.data) and len(self.data[0]) == len(other.data[0]):
